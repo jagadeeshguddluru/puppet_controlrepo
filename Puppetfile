@@ -1,6 +1,7 @@
 #mod 'dylanratcliffe/sumologic',
 #  :git => 'https://github.com/dylanratcliffe/sumologic.git'
 mod 'dylanratcliffe/sumologic',         '1.0.2'
+mod 'nwops-debug',                      '0.1.3'
 mod 'puppetlabs/mysql',                 '8.0.0'
 mod 'puppetlabs/inifile',               '2.5.0'
 mod 'puppet-r10k',                      '6.8.0'
@@ -41,7 +42,12 @@ mod 'puppet/collectd',                  '10.1.0'
 mod 'puppet-yum',                       '3.1.1'
 mod 'puppetlabs/puppetserver_gem',      '1.1.0'
 mod 'WhatsARanjit/node_manager',        '0.7.1'
-mod 'pltraining/rbac',                  '0.0.7'
+
+# Needs to use this fork until this is merged:
+# https://github.com/puppetlabs/pltraining-rbac/pull/18
+mod 'pltraining/rbac',
+  :git => 'https://github.com/as0bu/pltraining-rbac.git',
+  :ref => 'master'
 mod 'camptocamp/systemd',               '2.1.0'
 mod 'puppetlabs/stdlib',                '5.2.0'
 mod 'maestrodev/rvm',                   '1.13.1'
