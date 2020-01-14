@@ -4,12 +4,17 @@ class profile::cd4pe (
   String $artifact_dir               = '',
   String $database_dir               = '',
 ) {
+  package { 'podman':
+    ensure => present,
+  }
+
   class { '::cd4pe':
     cd4pe_version        => $cd4pe_version,
     manage_database      => true,
     agent_service_port   => 7000,
     backend_service_port => 8000,
     web_ui_port          => 8080,
+    require              => Package['podman'],
   }
 
   case $ha_mode {
