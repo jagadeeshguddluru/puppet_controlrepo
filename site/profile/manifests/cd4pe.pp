@@ -8,13 +8,19 @@ class profile::cd4pe (
     ensure => present,
   }
 
+  file { '/bin/docker':
+    ensure  => link,
+    target  => '/bin/podman',
+    require => Package['podman'],
+  }
+
   class { '::cd4pe':
     cd4pe_version        => $cd4pe_version,
     manage_database      => true,
     agent_service_port   => 7000,
     backend_service_port => 8000,
     web_ui_port          => 8080,
-    require              => Package['podman'],
+    require              => [Package['podman'],File['/bin/docker']],
   }
 
   case $ha_mode {
