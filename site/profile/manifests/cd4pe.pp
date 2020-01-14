@@ -1,6 +1,8 @@
 class profile::cd4pe (
   Enum['source', 'replica'] $ha_mode = 'source',
   String $cd4pe_version              = 'latest',
+  String $artifact_dir               = '',
+  String $database_dir               = '',
 ) {
   class { '::cd4pe':
     cd4pe_version        => $cd4pe_version,
